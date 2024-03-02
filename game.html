@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            float: right;
+        }
+        .this{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .finalbox{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<button type="button" id="play">Play</button>
+<p class="txt"></p>
+<div class="this">
+    <p id="comp">Computer: 0</p>
+    <p id="user">Player : 0</p>
+</div>
+<div class="finalbox">
+    <h1 id="final"></h1>
+</div>
+<script>
+    let button=document.querySelector("#play");
+    let userScores=0;
+    let computerScores=0;
+    button.addEventListener("click",function (){
+        let choice=prompt("choose rock,paper or scissors");
+       function compChoice(){
+        let choice= ((Math.floor(Math.random()*100))%3)+1;
+        if(choice ==1){
+            return 'rock';
+        }
+        else if(choice == 2){
+            return 'scissors';
+        }
+        else{
+            return 'paper';
+        }
+       }
+       let computer=compChoice();
+       if(userScores <= 4 && computerScores <= 4){
+       function playround(computer,choice){
+        let p=document.querySelector(".txt");
+        if ((choice == 'rock' && computer  == 'scissors') ||
+        (choice == 'scissors' && computer == 'paper') ||
+        (choice == 'paper' && computer == 'rock')) {
+        ++userScores;
+        p.style.color="green";
+        p.textContent=`You win , ${choice} beats ${computer} 🤩🤩🤩`;
+        document.querySelector("#user").textContent=`Player : ${userScores}`;
+        }
+        else if(computer==choice){
+            p.textContent=`It's a tie`;
+            p.style.color="blue"
+        }
+        else{
+            ++computerScores;
+            p.style.color="red";
+            p.textContent=`You lose , ${computer} beats ${choice} 😞😞😞`;
+            document.querySelector("#comp").textContent=`Computer : ${computerScores}`;
+        }
+       }
+       playround(computer,choice); 
+       console.log(times);
+    }
+       if(userScores == 5 || computerScores ==5){
+         let final=document.querySelector("#final")
+       if(userScores== 5){
+         final.style.color="green";
+         final.textContent="Congrats,You won 😎😎😎" 
+         userScores=0;
+         computerScores=0;
+         document.querySelector("#user").textContent=`Player : ${userScores}`;
+         document.querySelector("#comp").textContent=`Computer : ${computerScores}`;
+         document.querySelector("button").disabled=true;    
+       }
+       else if(computerScores== 5){
+        final.style.color="red";
+         final.textContent="You lost,Try again 😕😕😕";
+         userScores=0;
+        computerScores=0;
+        document.querySelector("#comp").textContent=`Computer : ${computerScores}`;
+        document.querySelector("#user").textContent=`Player : ${userScores}`;
+        document.querySelector("button").disabled=true;       
+    }
+    }});
+</script>
+</body>
+</html>
