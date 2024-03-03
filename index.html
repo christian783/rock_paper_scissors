@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        *{
+           font-family: Arial, Helvetica, sans-serif;
+        }
         h1 {
             float: right;
         }
@@ -77,15 +80,11 @@
                 let final = document.querySelector("#final")
                 if (userScores == 5) {
                     final.style.color = "green";
-                    final.textContent = "Congrats,You won 😎😎😎"
-                    document.querySelector("button").disabled=true;
+                    final.textContent = "Congrats,You won 😎😎😎";
                 }
                 else if (computerScores == 5) {
                     final.style.color = "red";
                     final.textContent = "You lost,Try again 😕😕😕";
-                    document.querySelector("#rock").disabled=true;
-                    document.querySelector("#scissors").disabled=true;
-                    document.querySelector("#paper").disabled=true;
                 }
                 
                 userScores = 0;
